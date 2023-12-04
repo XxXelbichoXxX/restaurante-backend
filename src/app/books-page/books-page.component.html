@@ -1,0 +1,22 @@
+
+<div>
+    <button (click)="newBookModal()" class="bg-green-500">Nuevo Libro</button>
+
+    <button (click)="logout()" class="bg-yellow-500">Cerrar Sesión</button>
+</div> <br>
+
+<ul>
+    @for (book of books; track book._id){
+        <li>
+            <img src={{book.img}} style="width: 100px;"/>
+            {{book.titulo}} <br>
+            {{book.autor}} <br>
+            <button class="bg-blue-500" (click)="updateBookModal(book)">
+                    Actualizar
+            </button>
+            <button class="bg-red-500" (click)="deleteBook(book)">
+                    Eliminar            
+            </button>
+        </li><br>
+    }
+</ul>

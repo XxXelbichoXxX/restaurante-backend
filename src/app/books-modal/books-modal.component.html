@@ -1,0 +1,34 @@
+<section>
+    <div class="text-right mx-5">
+        <button (click)="onClose()">
+            X
+        </button>
+    </div>
+
+    <div class="p-6 space-y-4">
+        <h1 class="text-xl font-bold text-black">
+            {{new ? 'Nuevo Libro' : 'Actualizar Libro'}}
+        </h1>
+        <div class="space-y-4 md:space-y-6">
+            <input class="bg-black text-white" [(ngModel)]="titulo" placeholder="Harry Potter y la Piedra Filosofal"><br>
+            <input class="bg-black text-white" [(ngModel)]="autor" placeholder="J.K. Rowling"><br>
+            <input class="bg-black text-white" [(ngModel)]="isbn" placeholder="9782070649693"><br>
+            <input class="bg-black text-white" [(ngModel)]="genero" placeholder="Fantasía"><br>
+            <input class="bg-black text-white" [(ngModel)]="precio" placeholder="299"><br>
+            <input class="bg-black text-white" [(ngModel)]="stock" placeholder="35"><br>
+            <input class="bg-black text-white" [(ngModel)]="img" placeholder="URL de Imagen"><br>
+       
+            <div class="text-center">
+                @if (new) {
+                    <button (click)="createBook()" class="bg-blue-500">
+                        Guardar
+                    </button>
+                } @else {
+                    <button (click)="updateBook()" class="bg-blue-500">
+                        Actualizar
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</section>
