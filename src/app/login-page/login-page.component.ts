@@ -13,7 +13,7 @@ export class LoginPageComponent {
     private apiProv: ApiProvider
   ){
     if(apiProv.isAunthenticatedUSer()){
-      window.location.href = '/books';
+      window.location.href = '/users';
     }
   }
   public login(){
@@ -25,7 +25,7 @@ export class LoginPageComponent {
       console.log(res);
       if(res.token){
         localStorage.setItem("token",res.token);
-        window.location.href = "/books";
+        window.location.href = "/users";
       }
     });
   }

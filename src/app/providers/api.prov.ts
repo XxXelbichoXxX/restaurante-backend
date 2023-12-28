@@ -9,9 +9,9 @@ import { environment } from "../../environments/environment";
 export class ApiProvider{
     url = environment.apiURL;
 
-    getBooks(): Promise<any>{
+    getUsers(): Promise<any>{
         return new Promise((resolve, reject)=>{
-            axios.get(this.url+'books').then(res =>{
+            axios.get(this.url+'users').then(res =>{
                 resolve(res.data);
             })
             .catch(err => {
@@ -47,47 +47,5 @@ export class ApiProvider{
                 console.log(err);
             });
         })
-    }
-    createBook(data: any): Promise<any>{
-        const token = localStorage.getItem("token");
-        return new Promise((resolve, reject)=>{
-            axios.post(this.url+'books',data,{
-                headers : {
-                    Authorization: token
-                }
-            }).then(res => {
-                resolve(res.data);
-            }).catch(err => {
-                console.log(err);
-            });
-        });
-    }
-    updateBook(bookID: any,data: any): Promise<any>{
-        const token = localStorage.getItem("token");
-        return new Promise((resolve, reject)=>{
-            axios.put(this.url+'books/'+ bookID,data,{
-                headers : {
-                    Authorization: token
-                }
-            }).then(res => {
-                resolve(res.data);
-            }).catch(err => {
-                console.log(err);
-            });
-        });
-    }
-    deleteBook(bookID: any): Promise<any>{
-        const token = localStorage.getItem("token");
-        return new Promise((resolve, reject)=>{
-            axios.delete(this.url+'books/'+ bookID,{
-                headers : {
-                    Authorization: token
-                }
-            }).then(res => {
-                resolve(res.data);
-            }).catch(err => {
-                console.log(err);
-            });
-        });
     }
 }

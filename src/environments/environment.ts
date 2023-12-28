@@ -1,4 +1,3 @@
 export const environment = {
-    //apiURL : 'http://localhost:3003/'
-    apiURL: 'https://books-ittepic-api.vercel.app/',
+    apiURL: 'https://api-erivt9382-vmprs-projects.vercel.app/',
 };
