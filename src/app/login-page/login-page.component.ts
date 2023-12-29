@@ -13,7 +13,8 @@ export class LoginPageComponent {
     private apiProv: ApiProvider
   ){
     if(apiProv.isAunthenticatedUSer()){
-      window.location.href = '/users';
+      window.location.href = '/employees';
+      console.log('Inicio sesion');
     }
   }
   public login(){
@@ -25,7 +26,7 @@ export class LoginPageComponent {
       console.log(res);
       if(res.token){
         localStorage.setItem("token",res.token);
-        window.location.href = "/users";
+        window.location.href = "/employees";
       }
     });
   }
