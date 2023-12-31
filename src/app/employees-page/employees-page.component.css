@@ -1,0 +1,164 @@
+
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 50px;
+}
+
+/* Estilos del header */
+.site-header {
+    background-color: #fff; 
+    border-bottom: 2px solid #ddd; 
+    padding: 15px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title-font-body {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px; 
+    color: #333; 
+    text-decoration: none;
+}
+
+.nav-link {
+    margin-right: 15px;
+    margin-top: 10px; 
+    color: #555; 
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #000; 
+}
+
+.logout-button {
+    margin-top: 10px; 
+    background-color: #FFD700; 
+    border: none;
+    padding: 8px 16px; 
+    font-size: 12px; 
+    font-weight: bold;
+    color: #333; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.logout-button:hover {
+    background-color: #FFC700; 
+}
+
+/* Estilos adicionales para la sección del equipo */
+.team-title {
+    color: #222;
+    font-size: 20px;
+    font-style: italic;
+    margin-left: 85px;
+}
+
+.team-section {
+    text-align: center;
+    color: #333;
+}
+
+.team-container {
+    padding: 40px 0;
+}
+
+.team-header {
+    margin-bottom: 20px;
+}
+
+.team-member {
+    width: 100%;
+    padding: 10px;
+}
+
+.team-card {
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: scale(1.05);
+}
+
+.team-avatar {
+    width: 80px;
+    height: 80px;
+}
+
+.team-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-name {
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.team-email {
+    color: #222;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.team-wShift {
+    color: #222;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.team-position {
+    font-size: 14px;
+    color: #555;
+}
+
+.crud-buttons {
+    display: flex;
+}
+
+.crud-buttons p:first-child {
+    color: #FFD700;
+}
+
+.crud-buttons p:last-child {
+    color: red;
+}
+
+.bg-green-500{
+    margin-left: 86px;
+}
+
+/* Estilos footer */
+
+footer {
+    background-color: #f8f8f8;
+    border-top: 1px solid #e2e2e2;
+}
+
+
+.title-font-footer {
+    font-size: 1rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}

@@ -1,0 +1,35 @@
+<section class="modal">
+    <div class="modal-header">
+        <button (click)="onClose()" class="close-button">
+            X
+        </button>
+    </div>
+
+    <div class="modal-content">
+        <div class="input-group">
+            <label for="userName">Usuario:</label>
+            <input id="userName" class="modal-input" [(ngModel)]="userName" placeholder="@Usuario">
+        </div>
+
+        <div class="input-group">
+            <label for="email">Correo:</label>
+            <input id="email" class="modal-input" [(ngModel)]="email" placeholder="correo@prueba.com">
+        </div>
+
+        <div class="input-group">
+            <label for="wShift">Turno:</label>
+            <input id="wShift" class="modal-input" [(ngModel)]="wShift" placeholder="Turno">
+        </div>
+
+        <div class="input-group">
+            <label for="photo">Foto:</label>
+            <input id="photo" class="modal-input" [(ngModel)]="photo" placeholder="Foto">
+        </div>
+   
+        <div class="text-center">
+            <button (click)="updateUser()" class="update-button">
+                Actualizar
+            </button>
+        </div>
+    </div>
+</section>

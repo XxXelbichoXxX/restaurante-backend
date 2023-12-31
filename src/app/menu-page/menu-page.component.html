@@ -1,1 +1,78 @@
-<p>menu-page works!</p>
+<header class="site-header">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a routerLink="/menu" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <span class="ml-3 text-xl">La Fonda del Bicho</span>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a routerLink="/employees" class="nav-link">Empleados</a>
+            <a routerLink="/menu" class="nav-link">Menú</a>
+            <a routerLink="/orders" class="nav-link">Órdenes</a>
+            <a routerLink="/tables" class="nav-link">Mesas</a>
+        </nav>
+        <button (click)="logout()" class="logout-button">Cerrar Sesión</button>
+    </div>
+</header>
+
+<body>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-wrap w-full mb-20">
+            <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+              <h1 class="sm:text-3xl text-2xl font-medium title-font-body mb-2 text-gray-900">Sobre Nosotros...</h1>
+              <div class="h-1 w-20 bg-green-500 rounded"></div>
+            </div>
+            <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Somos un restaurante originario de Tepic, Nayarit, fundado por Victor Manuel Pacheco Rosales. Ofrecemos una gran variedad de platos, así como un sazón inigualable en todo el estado.</p>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/elgranchef/m/menu-para-halloween-quesadillas-sopa-y-ensalada.jpg" alt="content">
+                <h3 class="tracking-widest text-green-500 text-xs font-medium title-font">Entradas</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Aperitivos</h2>
+                <br>
+                <p class="leading-relaxed text-base">"¡Bienvenidos al sabor inigualable! Disfruten de una experiencia culinaria única que deleitará sus sentidos. ¡Buen provecho!".</p>
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://i.pinimg.com/originals/5c/ca/c5/5ccac553fd9435b1ff62bc5d9af00ce1.jpg" alt="content">
+                <h3 class="tracking-widest text-green-500 text-xs font-medium title-font">Platillos</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Platos Fuertes</h2>
+                <br>
+                <p class="leading-relaxed text-base">"Deléitese con nuestro plato estrella: una explosión de sabores que cautivará su paladar. Una experiencia culinaria inolvidable. ¡Buen provecho!"</p>
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.aarp.net/content/dam/aarp/food/recipes/2018/10/1140-limofresa-gas-drink-esp.jpg" alt="content">
+                <h3 class="tracking-widest text-green-500 text-xs font-medium title-font">Bebidas</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Para Tomar</h2>
+                <br>
+                <p class="leading-relaxed text-base">"Refresque su experiencia con nuestras irresistibles bebidas. Desde clásicos hasta creaciones únicas, elevamos cada sorbo para acompañar su momento. ¡Salud!"</p>
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://www.restauranterossini.com/wp-content/uploads/2023/09/93-Rossini-e1694076443910.jpg" alt="content">
+                <h3 class="tracking-widest text-green-500 text-xs font-medium title-font">Postres</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Algo Dulce</h2>
+                <br>
+                <p class="leading-relaxed text-base">"Concluya su festín con dulces caprichos que endulzarán su paladar. Nuestros postres son la nota perfecta para cerrar con broche de oro su experiencia gastronómica. ¡Dulce deleite!"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  </body>
+
+<footer class="text-gray-600 body-font">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-col flex-col">
+        <a class="flex title-font-footer font-medium items-center md:justify-start justify-center text-gray-900">
+            <span class="ml-3 text-xl">2024 La Fonda del Bicho</span>
+        </a>
+        <p style="margin-left: 10px;" class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 sm:text-center"> - © Todos los derechos reservados - 
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        </span>
+    </div>
+</footer>

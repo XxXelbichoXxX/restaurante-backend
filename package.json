@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
     "axios": "^1.6.2",
+    "font-awesome": "^4.7.0",
     "rxjs": "~7.8.0",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.10.1",

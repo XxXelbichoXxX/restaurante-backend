@@ -6,27 +6,27 @@ import { ApiProvider } from '../providers/api.prov';
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
-  public email: string = '';
+  public userName: string = '';
   public password: string = '';
 
   constructor(
     private apiProv: ApiProvider
   ){
     if(apiProv.isAunthenticatedUSer()){
-      window.location.href = '/employees';
+      window.location.href = '/menu';
       console.log('Inicio sesion');
     }
   }
   public login(){
     const data = {
-      email: this.email,
+      userName: this.userName,
       password: this.password
     }
     this.apiProv.login(data).then(res =>{
       console.log(res);
       if(res.token){
         localStorage.setItem("token",res.token);
-        window.location.href = "/employees";
+        window.location.href = "/menu";
       }
     });
   }
