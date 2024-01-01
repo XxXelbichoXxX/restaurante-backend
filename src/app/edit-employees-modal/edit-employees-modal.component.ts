@@ -45,6 +45,7 @@ export class EditEmployeesModalComponent {
     this.apiProv.updateUser(this.userName, data)
     .then(
       (res) => {
+        console.log("Respuesta del servidor:", res); // Añade esta línea para verificar la respuesta del servidor
         if(res){
           Swal.fire({
             title: "Usuario Actualizado",

@@ -65,6 +65,7 @@ export class ApiProvider{
     }
     
     updateUser(userName: any,data: any): Promise<any>{
+        console.log("userName:", userName);
         const token = localStorage.getItem("token");
         return new Promise((resolve, reject)=>{
             axios.put(this.url+'users/'+ userName, data,{
