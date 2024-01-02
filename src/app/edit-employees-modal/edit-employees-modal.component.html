@@ -8,8 +8,8 @@
     <div class="modal-content">
         <div class="input-group">
             <label for="userName">Usuario:</label>
-            <input id="userName" class="modal-input" [(ngModel)]="userName" placeholder="@Usuario">
-        </div>
+            <input id="userName" class="modal-input" [(ngModel)]="userName" placeholder="@Usuario" disabled>
+        </div>              
 
         <div class="input-group">
             <label for="email">Correo:</label>
@@ -18,8 +18,13 @@
 
         <div class="input-group">
             <label for="wShift">Turno:</label>
-            <input id="wShift" class="modal-input" [(ngModel)]="wShift" placeholder="Turno">
+            <select id="wShift" class="modal-input" [(ngModel)]="wShift">
+                <option value="Matutino">Matutino</option>
+                <option value="Vespertino">Vespertino</option>
+                <option value="Tiempo completo">Tiempo completo</option>
+            </select>
         </div>
+        
 
         <div class="input-group">
             <label for="photo">Foto:</label>

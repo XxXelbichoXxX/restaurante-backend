@@ -50,7 +50,7 @@ export class EmployeesPageComponent {
       cancelButtonText: `Cancelar`
     }).then((result) => {
       if (result.isConfirmed) {
-        this.apiProv.deleteUser(user._id)
+        this.apiProv.deleteUser(user._userName)
           .then(
             (res) => {
               Swal.fire({
@@ -66,7 +66,12 @@ export class EmployeesPageComponent {
 
   public registerUser() {
     const dialogRef = this.dialog.open(AddEmployeesModalComponent, {
-      width: '400px', // ajusta el ancho según tus necesidades
+      data: {
+        new: true
+      }
+    });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.getUsers();
     });
 }
 

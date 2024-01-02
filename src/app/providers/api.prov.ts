@@ -81,20 +81,22 @@ export class ApiProvider{
     }
 
 
-    deleteUser(userName: any): Promise<any>{
+    deleteUser(userName: any): Promise<any> {
         const token = localStorage.getItem("token");
-        return new Promise((resolve, reject)=>{
-            axios.delete(this.url+'users/'+ userName,{
-                headers : {
+        return new Promise((resolve, reject) => {
+            axios.delete(this.url + 'users/' + userName, {
+                headers: {
                     Authorization: token
                 }
             }).then(res => {
                 resolve(res.data);
             }).catch(err => {
                 console.log(err);
+                reject(err);
             });
         });
     }
+    
 
 
 }
