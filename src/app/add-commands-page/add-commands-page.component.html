@@ -1,49 +1,46 @@
-<h2 class="modal-title">Agregar Orden</h2>
+<section class="modal">
+  <div class="modal-header">
+      <button (click)="onClose()" class="close-button">
+          X
+      </button>
+  </div>
 
-<div class="modal-body">
-  <!-- Formulario para ingresar detalles de la orden -->
-  <form>
-    <div class="form-group">
-      <label for="numeroMesa">Número de Mesa:</label>
-      <input type="number" id="numeroMesa" [(ngModel)]="newOrder.numero_mesa" class="form-control" required>
-    </div>
+  <div class="modal-content">
+      <div class="input-group">
+          <label for="userName">No. de orden:</label>
+          <input id="No_Orden" type="number" class="modal-input" [(ngModel)]="No_Orden" placeholder="No_Orden" required>
+      </div>              
 
-    <div class="form-group">
-      <label for="mesero">Mesero:</label>
-      <input type="text" id="mesero" [(ngModel)]="newOrder.user_mesero" class="form-control" required>
-    </div>
+      <div class="input-group">
+          <label for="Mesa">Mesa:</label>
+          <input id="Mesa" class="modal-input" [(ngModel)]="Mesa" placeholder="Mesa" required>
+      </div>
 
-    <div class="form-group">
-      <label for="product">Producto:</label>
-      <select id="product" [(ngModel)]="selectedProduct" class="form-control">
-        <option *ngFor="let product of products" [ngValue]="product">{{ product.nombre }} - ${{ product.precio }}</option>
-      </select>
-    </div>
+      <div class="input-group">
+          <label for="Mesero">Mesero:</label>
+          <input id="Mesero" class="modal-input" [(ngModel)]="Mesero" placeholder="Mesero" required>
+      </div>
+      
 
-    <div class="form-group">
-      <label for="quantity">Cantidad:</label>
-      <input type="number" id="quantity" [(ngModel)]="quantity" class="form-control" required>
-    </div>
+      <div class="input-group">
+          <label for="wShift">Turno:</label>
+          <select id="wShift" class="modal-input" [(ngModel)]="wShift" required>
+              <option value="Matutino">Matutino</option>
+              <option value="Vespertino">Vespertino</option>
+              <option value="Tiempo completo">Tiempo completo</option>
+          </select>
+      </div>
+      
 
-    <button type="button" class="btn btn-primary" (click)="addProductToOrder()">
-      Agregar Producto
-    </button>
-
-    <!-- Mostrar los productos agregados a la orden -->
-    <div *ngIf="newOrder.orden.length > 0">
-      <h3>Productos Agregados:</h3>
-      <ul>
-        <li *ngFor="let item of newOrder.orden">
-          {{ item.nombre_producto }} - Cantidad: {{ item.cantidad }} - Precio unitario: ${{ item.precio_unitario }}
-        </li>
-      </ul>
-      <p>Total: ${{ newOrder.total_orden }}</p>
-    </div>
-  </form>
-</div>
-
-<div class="modal-footer">
-  <!-- Botones para guardar o cerrar el cuadro de diálogo -->
-  <button type="button" class="btn btn-success" (click)="saveOrder()">Guardar Orden</button>
-  <button type="button" class="btn btn-secondary" (click)="closeDialog()">Cerrar</button>
-</div>
+      <div class="input-group">
+          <label for="Status">Status:</label>
+          <input id="Status" class="modal-input" [(ngModel)]="Status" placeholder="Status" required>
+      </div>
+ 
+      <div class="text-center">
+          <button (click)="createOrder()" class="update-button">
+              Agregar orden
+          </button>
+      </div>
+  </div>
+</section>

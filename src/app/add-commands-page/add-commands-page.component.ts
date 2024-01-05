@@ -9,70 +9,57 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-commands-page.component.css']
 })
 export class AddCommandsPageComponent {
-  public newOrder: any = {
-    numero_mesa: '',
-    user_mesero: '',
-    orden: [],
-    total_orden: 0,
-    status: 'Pendiente'
-  };
-
-  public selectedProduct: any = null;
-  public quantity: number = 0;
-  public products: any[] = [
-    { nombre: 'Hamburguesa', precio: 135 },
-    { nombre: 'Refresco', precio: 45 }
-    // Puedes agregar más productos según sea necesario
-  ];
-
+  public new = true;
+  public userName = "";
+  public email = "";
+  public password = "";
+  public wShift = "";
+  public photo = "";
+  public No_Orden=0;
+  public Mesa=0;
+  public Mesero="";
+  public Status="";
+  public orden = [];
   constructor(
-    private apiProv: ApiProvider,
     public dialogRef: MatDialogRef<AddCommandsPageComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private apiProv: ApiProvider
   ) {}
 
-  addProductToOrder() {
-    if (this.selectedProduct && this.quantity) {
-      const newItem = {
-        nombre_producto: this.selectedProduct.nombre,
-        cantidad: this.quantity,
-        precio_unitario: this.selectedProduct.precio
-      };
-      this.newOrder.orden.push(newItem);
-      this.newOrder.total_orden += newItem.cantidad * newItem.precio_unitario;
-
-      // Reinicia la selección después de agregar un producto
-      this.selectedProduct = null;
-      this.quantity = 0;
-    } else {
+  public createOrder() {
+    if (!this.No_Orden || !this.Mesa || !this.Mesero || !this.Status || !this.orden) {
       Swal.fire({
-        title: 'Error',
-        text: 'Seleccione un producto y ingrese la cantidad',
-        icon: 'error'
+        title: "Complete todos los campos",
+        icon: "error"
       });
+      console.error('Todos los campos son obligatorios');
+      return;
+  }
+  
+    const data = {
+      No_Orden: this.No_Orden,
+      Mesa: this.Mesa,
+      Mesero: this.Mesero,
+      Status: this.Status,
+      orden: this.orden
     }
-  }
-
-  saveOrder() {
-    this.apiProv.createCommands(this.newOrder)
-      .then(
-        (res) => {
+    this.apiProv.createUser(data)
+    .then(
+      (res) => {
+        if(res){
           Swal.fire({
-            title: 'Orden Agregada',
-            icon: 'success'
+            title: "Usuario Creado",
+            icon: "success"
           });
-          this.dialogRef.close();
-        })
-      .catch(err => {
-        console.log(err);
-        Swal.fire({
-          title: 'Error al agregar la orden',
-          icon: 'error'
-        });
-      });
+          this.onClose()
+        }
+      }
+    );
   }
-
-  closeDialog() {
+  
+  onClose(): void{
     this.dialogRef.close();
   }
-}
+  
+  }
+  
