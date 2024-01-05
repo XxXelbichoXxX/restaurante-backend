@@ -9,16 +9,7 @@ import { environment } from "../../environments/environment";
 export class ApiProvider{
     url = environment.apiURL;
 
-    getUsers(): Promise<any>{
-        return new Promise((resolve, reject)=>{
-            axios.get(this.url+'users').then(res =>{
-                resolve(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-        })
-    }
+    //Autenticacion de usuarios
     login(data:any) : Promise<any>{
         return new Promise((resolve, reject)=>{
             axios.post(this.url+'users/login',data)
@@ -38,6 +29,18 @@ export class ApiProvider{
     logout(){
         localStorage.removeItem("token");
     }
+
+    //Usuarios
+    getUsers(): Promise<any>{
+        return new Promise((resolve, reject)=>{
+            axios.get(this.url+'users').then(res =>{
+                resolve(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        })
+    }
     register(data:any): Promise<any>{
         return new Promise((resolve, reject)=>{
             axios.post(this.url+'users').then(res =>{
@@ -48,7 +51,6 @@ export class ApiProvider{
             });
         })
     }
-
     createUser(data: any): Promise<any>{
         const token = localStorage.getItem("token");
         return new Promise((resolve, reject)=>{
@@ -63,7 +65,6 @@ export class ApiProvider{
             });
         });
     }
-    
     updateUser(userName: any,data: any): Promise<any>{
         console.log("userName:", userName);
         const token = localStorage.getItem("token");
@@ -79,12 +80,10 @@ export class ApiProvider{
             });
         });
     }
-
-
     deleteUser(userName: any): Promise<any> {
         const token = localStorage.getItem("token");
         return new Promise((resolve, reject) => {
-            axios.delete(this.url + 'users/' + userName, {
+            axios.delete(this.url+'users/' + userName, {
                 headers: {
                     Authorization: token
                 }
@@ -97,6 +96,60 @@ export class ApiProvider{
         });
     }
     
+    //Ordenes
+    getCommands(): Promise<any>{
+        return new Promise((resolve, reject)=>{
+            axios.get(this.url+'orders').then(res =>{
+                resolve(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        })
+    }
 
+    createCommands(data: any): Promise<any>{
+        const token = localStorage.getItem("token");
+        return new Promise((resolve, reject)=>{
+            axios.post(this.url+'orders',data,{
+                headers : {
+                    Authorization: token
+                }
+            }).then(res => {
+                resolve(res.data);
+            }).catch(err => {
+                console.log(err);
+            });
+        });
+    }
+    updateCommands(orderId: any,data: any): Promise<any>{
+        const token = localStorage.getItem("token");
+        return new Promise((resolve, reject)=>{
+            axios.put(this.url+'orders/'+orderId,data,{
+                headers : {
+                    Authorization: token
+                }
+            }).then(res => {
+                resolve(res.data);
+            }).catch(err => {
+                console.log(err);
+            });
+        });
+    }
 
+    deleteCommands(orderId: any): Promise<any> {
+        const token = localStorage.getItem("token");
+        return new Promise((resolve, reject) => {
+            axios.delete(this.url + 'orders/' + orderId, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(res => {
+                resolve(res.data);
+            }).catch(err => {
+                console.log(err);
+                reject(err);
+            });
+        });
+    }
 }

@@ -1,1 +1,49 @@
-<p>add-commands-page works!</p>
+<h2 class="modal-title">Agregar Orden</h2>
+
+<div class="modal-body">
+  <!-- Formulario para ingresar detalles de la orden -->
+  <form>
+    <div class="form-group">
+      <label for="numeroMesa">Número de Mesa:</label>
+      <input type="number" id="numeroMesa" [(ngModel)]="newOrder.numero_mesa" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="mesero">Mesero:</label>
+      <input type="text" id="mesero" [(ngModel)]="newOrder.user_mesero" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="product">Producto:</label>
+      <select id="product" [(ngModel)]="selectedProduct" class="form-control">
+        <option *ngFor="let product of products" [ngValue]="product">{{ product.nombre }} - ${{ product.precio }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Cantidad:</label>
+      <input type="number" id="quantity" [(ngModel)]="quantity" class="form-control" required>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="addProductToOrder()">
+      Agregar Producto
+    </button>
+
+    <!-- Mostrar los productos agregados a la orden -->
+    <div *ngIf="newOrder.orden.length > 0">
+      <h3>Productos Agregados:</h3>
+      <ul>
+        <li *ngFor="let item of newOrder.orden">
+          {{ item.nombre_producto }} - Cantidad: {{ item.cantidad }} - Precio unitario: ${{ item.precio_unitario }}
+        </li>
+      </ul>
+      <p>Total: ${{ newOrder.total_orden }}</p>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <!-- Botones para guardar o cerrar el cuadro de diálogo -->
+  <button type="button" class="btn btn-success" (click)="saveOrder()">Guardar Orden</button>
+  <button type="button" class="btn btn-secondary" (click)="closeDialog()">Cerrar</button>
+</div>

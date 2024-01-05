@@ -1,0 +1,117 @@
+/* Estilo para el formulario de agregar órdenes */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para las etiquetas del formulario */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #3490dc;
+    color: #fff;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* Estilo para las entradas de texto del formulario */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Estilo para el contenedor de productos */
+.product-group {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Estilo para el botón de agregar producto */
+.add-product-button {
+    background-color: #3490dc;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.add-product-button:hover {
+    background-color: #2074a0;
+}
+
+/* Estilo para el botón de eliminar producto */
+.remove-product-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.remove-product-button:hover {
+    background-color: #bb2d3b;
+}
+
+/* Estilo para el botón de agregar orden */
+.submit-button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para el botón de cancelar */
+.cancel-button {
+    background-color: #ddd;
+    color: #333;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+    background-color: #bbb;
+}
+
+
+form {
+    max-height: 500px; /* Ajusta la altura máxima según sea necesario */
+    overflow-y: auto;
+}
+
