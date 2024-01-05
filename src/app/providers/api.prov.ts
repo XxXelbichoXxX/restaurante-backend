@@ -83,20 +83,55 @@ export class ApiProvider{
 
     deleteUser(userName: any): Promise<any> {
         const token = localStorage.getItem("token");
+        console.log("Deleting user with userName:", userName); // Agregar esta línea
+    
         return new Promise((resolve, reject) => {
+            // Verifica si userName está definido
+            if (!userName) {
+                console.error("Error: userName is undefined");
+                reject("Error: userName is undefined");
+                return;
+            }
+    
             axios.delete(this.url + 'users/' + userName, {
                 headers: {
+                    Authorization: token
+                }
+            }).then(res => {
+                console.log("Response from backend:", res.data);
+                resolve(res.data);
+            }).catch(err => {
+                console.log("Error from backend:", err);
+                reject(err);
+            });
+        });
+    }
+    
+    /* PRODUCS MENU */
+    getProducts(): Promise<any>{
+        return new Promise((resolve, reject)=>{
+            axios.get(this.url+'products').then(res =>{
+                resolve(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        })
+    }
+    addProduct(data: any): Promise<any>{
+        const token = localStorage.getItem("token");
+        return new Promise((resolve, reject)=>{
+            axios.post(this.url+'products',data,{
+                headers : {
                     Authorization: token
                 }
             }).then(res => {
                 resolve(res.data);
             }).catch(err => {
                 console.log(err);
-                reject(err);
             });
         });
     }
-    
 
 
 }

@@ -50,7 +50,7 @@ export class EmployeesPageComponent {
       cancelButtonText: `Cancelar`
     }).then((result) => {
       if (result.isConfirmed) {
-        this.apiProv.deleteUser(user._userName)
+        this.apiProv.deleteUser(user.userName)
           .then(
             (res) => {
               Swal.fire({
