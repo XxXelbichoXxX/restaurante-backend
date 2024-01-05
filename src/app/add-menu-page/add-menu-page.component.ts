@@ -15,6 +15,7 @@ export class AddMenuPageComponent {
   public category = "";
   public description = "";
   public price = 0;
+  public photo = "";
   constructor (
     public dialogRef: MatDialogRef<AddMenuPageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,7 +25,7 @@ export class AddMenuPageComponent {
   }
 
   public addProduct(){
-    if (!this.id || !this.saucer_name || !this.category || !this.description || !this.price) {
+    if (!this.id || !this.saucer_name || !this.category || !this.description || !this.price || !this.photo) {
       Swal.fire({
         title: "Complete todos los campos",
         icon: "error"
@@ -37,7 +38,8 @@ export class AddMenuPageComponent {
     saucer_name: this.saucer_name,
     category: this.category,
     description: this.description,
-    price: this.price
+    price: this.price,
+    photo: this.photo
   }
   this.apiProv.addProduct(data).then(res =>{
     if(res){
