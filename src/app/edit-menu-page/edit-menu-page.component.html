@@ -1,1 +1,51 @@
-<p>edit-menu-page works!</p>
+<section class="modal">
+    <div class="modal-header">
+        <button (click)="onClose()" class="close-button">
+            X
+        </button>
+    </div>
+
+    <div class="modal-content">
+        <div class="input-group">
+            <label for="id">Codigo de producto:</label>
+            <input id="id" class="modal-input" [(ngModel)]="id" placeholder="Codigo de producto" disabled>
+        </div>              
+
+        <div class="input-group">
+            <label for="saucer_name">Nombre del platillo:</label>
+            <input id="saucer_name" class="modal-input" [(ngModel)]="saucer_name" placeholder="Nombre del platillo" required>
+        </div>
+
+        <div class="input-group">
+            <label for="category">Categoria:</label>
+            <select id="category" class="modal-input" [(ngModel)]="category" required>
+                <option value="Bebida">Bebida</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Pasta">Pasta</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="description">Descripción:</label>
+            <input type="description" id="description" class="modal-input" [(ngModel)]="description" placeholder="Descripcion" required>
+        </div>
+        
+        
+
+        <div class="input-group">
+            <label for="price">Precio:</label>
+            <input id="price" class="modal-input" [(ngModel)]="price" placeholder="$" type="number" required>
+        </div>
+
+        <div class="input-group">
+            <label for="photo">Fotografia del producto:</label>
+            <input id="photo" class="modal-input" [(ngModel)]="photo" placeholder="Inserta imagen" required>
+        </div>
+   
+        <div class="text-center">
+            <button (click)="updateProduct()" class="update-button">
+                Actualizar platillo
+            </button>
+        </div>
+    </div>
+</section>

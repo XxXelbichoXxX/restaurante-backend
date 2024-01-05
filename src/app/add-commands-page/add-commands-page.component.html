@@ -1,46 +1,66 @@
 <section class="modal">
-  <div class="modal-header">
-      <button (click)="onClose()" class="close-button">
-          X
-      </button>
-  </div>
+    <div class="modal-header">
+        <button (click)="onClose()" class="close-button">X</button>
+    </div>
 
-  <div class="modal-content">
-      <div class="input-group">
-          <label for="userName">No. de orden:</label>
-          <input id="No_Orden" type="number" class="modal-input" [(ngModel)]="No_Orden" placeholder="No_Orden" required>
-      </div>              
+    <div class="modal-content">
+        <div class="input-group">
+            <label for="No_Orden">No. de orden:</label>
+            <input id="No_Orden" type="number" class="modal-input" [(ngModel)]="_id" placeholder="No_Orden" required />
+        </div>
 
-      <div class="input-group">
-          <label for="Mesa">Mesa:</label>
-          <input id="Mesa" class="modal-input" [(ngModel)]="Mesa" placeholder="Mesa" required>
-      </div>
+        <div class="input-group">
+            <label for="Mesa">Mesa:</label>
+            <input id="Mesa" type="number" class="modal-input" [(ngModel)]="numero_mesa" placeholder="Mesa" required />
+        </div>
 
-      <div class="input-group">
-          <label for="Mesero">Mesero:</label>
-          <input id="Mesero" class="modal-input" [(ngModel)]="Mesero" placeholder="Mesero" required>
-      </div>
-      
+        <div class="input-group">
+            <label for="Mesero">Mesero:</label>
+            <select id="Mesero" class="modal-input" [(ngModel)]="user_mesero" required>
+                <option *ngFor="let mesero of users" [value]="mesero.userName">${{mesero.userName}}</option>
+            </select>
+        </div>
 
-      <div class="input-group">
-          <label for="wShift">Turno:</label>
-          <select id="wShift" class="modal-input" [(ngModel)]="wShift" required>
-              <option value="Matutino">Matutino</option>
-              <option value="Vespertino">Vespertino</option>
-              <option value="Tiempo completo">Tiempo completo</option>
-          </select>
-      </div>
-      
+        <div class="order">
+            <div class="input-group">
+                <label for="producto">Producto:</label>
+                <select id="producto" class="modal-input" [(ngModel)]="nombre_producto"
+                    (ngModelChange)="onProductSelected()" required>
+                    <option *ngFor="let product of productos" [value]="product.saucer_name">{{ product.saucer_name }}</option>
+                </select>
+                <div class="input-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <input id="cantidad" type="number" class="modal-input" [(ngModel)]="cantidad" placeholder="Cantidad"required />
+                </div>
+                <div class="input-group">
+                    <label for="precio">Precio:</label>
+                    <input id="precio" type="number" class="modal-input" [(ngModel)]="precio_unitario" placeholder="Precio" disabled />
+                </div>                
+            </div>
+        </div>
 
-      <div class="input-group">
-          <label for="Status">Status:</label>
-          <input id="Status" class="modal-input" [(ngModel)]="Status" placeholder="Status" required>
-      </div>
- 
-      <div class="text-center">
-          <button (click)="createOrder()" class="update-button">
-              Agregar orden
-          </button>
-      </div>
-  </div>
+        <button (click)="addProduct()" class="add-button">Agregar Producto</button>
+
+        <div *ngIf="orden.length > 0" class="selected-products">
+            <h3>Productos Seleccionados:</h3>
+            <ul>
+                <li *ngFor="let product of orden">
+                    {{ product.nombre_producto }} - Cantidad: {{ product.cantidad }} - Precio unitario: ${{product.precio_unitario}}
+                </li>
+            </ul>
+        </div>
+
+        <div class="input-group">
+            <label for="Status">Status:</label>
+            <select id="Status" class="modal-input" [(ngModel)]="status" required>
+                <option value="Pendiente">Pendiente</option>
+                <option value="En proceso">En proceso</option>
+                <option value="Completada">Completada</option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button (click)="createOrder()" class="update-button">Registrar orden</button>
+        </div>
+    </div>
 </section>

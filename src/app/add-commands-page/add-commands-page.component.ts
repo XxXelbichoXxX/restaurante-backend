@@ -1,7 +1,13 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiProvider } from '../providers/api.prov';
 import Swal from 'sweetalert2';
+
+interface Producto {
+  id: string;
+  saucer_name: string;
+  price: number;
+}
 
 @Component({
   selector: 'app-add-commands-page',
@@ -9,57 +15,135 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-commands-page.component.css']
 })
 export class AddCommandsPageComponent {
+
   public new = true;
-  public userName = "";
-  public email = "";
-  public password = "";
-  public wShift = "";
-  public photo = "";
-  public No_Orden=0;
-  public Mesa=0;
-  public Mesero="";
-  public Status="";
-  public orden = [];
+  public _id = '';
+  public numero_mesa = 0;
+  public user_mesero = "";
+  public users: any[] = [];
+  public orden: any[] = [];
+  public productos: Producto[] = [];
+  public nombre_producto: string = "";
+  public cantidad = 0;
+  public precio_unitario = 0;
+  public status = "";
+  public orders: any[] = [];
+
+
   constructor(
     public dialogRef: MatDialogRef<AddCommandsPageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private apiProv: ApiProvider
-  ) {}
+  ) {
+    this.getProducts();
+    this.getUsers();
+  }
 
   public createOrder() {
-    if (!this.No_Orden || !this.Mesa || !this.Mesero || !this.Status || !this.orden) {
+    if (!this._id || !this.numero_mesa || !this.user_mesero || !this.status || !this.orden) {
       Swal.fire({
         title: "Complete todos los campos",
         icon: "error"
       });
       console.error('Todos los campos son obligatorios');
       return;
-  }
-  
-    const data = {
-      No_Orden: this.No_Orden,
-      Mesa: this.Mesa,
-      Mesero: this.Mesero,
-      Status: this.Status,
-      orden: this.orden
     }
-    this.apiProv.createUser(data)
-    .then(
-      (res) => {
-        if(res){
-          Swal.fire({
-            title: "Usuario Creado",
-            icon: "success"
-          });
-          this.onClose()
-        }
-      }
-    );
+
+    // Filtrar los productos para quitar aquellos con nombre_producto vacío
+    const filteredOrden = this.orden.filter(product => product.nombre_producto.trim() !== '');
+
+    const data = {
+      _id: this._id,
+      numero_mesa: this.numero_mesa,
+      user_mesero: this.user_mesero,
+      orden: filteredOrden,  // Usar el arreglo filtrado
+      status: this.status,
+    };
+
+    console.log(data);
+
+    // Verificar si hay al menos un producto en la orden antes de enviar la solicitud
+    if (filteredOrden.length > 0) {
+      this.apiProv.createCommands(data)
+        .then(
+          (res) => {
+            if (res) {
+              Swal.fire({
+                title: "Orden Creada",
+                icon: "success"
+              });
+              this.onClose();
+            }
+          }
+        );
+    } else {
+      Swal.fire({
+        title: "La orden debe tener al menos un producto",
+        icon: "error"
+      });
+      console.error('La orden debe tener al menos un producto');
+    }
   }
-  
-  onClose(): void{
+
+
+  addProduct() {
+    if (!this.nombre_producto || !this.cantidad) {
+      Swal.fire({
+        title: 'Complete todos los campos',
+        icon: 'error'
+      });
+      console.error('Todos los campos son obligatorios');
+      return;
+    }
+
+    const newProduct = {
+      nombre_producto: this.nombre_producto,
+      cantidad: this.cantidad,
+      precio_unitario: this.precio_unitario
+    };
+
+    if (newProduct.nombre_producto.trim() !== '') {
+      // Agrega el nuevo producto al array 'orden'
+      this.orden = [...this.orden, newProduct];
+    }
+
+    this.nombre_producto = '';
+    this.cantidad = 0;
+    this.precio_unitario = 0;
+  }
+
+  onClose(): void {
     this.dialogRef.close();
   }
-  
+
+  public getProducts() {
+    this.apiProv.getProducts().then(res => {
+      this.productos = res.data;
+    });
   }
-  
+
+  public getUsers() {
+    this.apiProv.getUsers().then(res => {
+      this.users = res.data;
+    })
+  }
+  getProductPriceById(productId: string): number {
+    const product = this.productos.find(p => p.id === productId);
+    return product ? product.price : 0;
+  }
+
+  onProductSelected() {
+    // Buscar el producto seleccionado en el array de productos
+    const selectedProduct = this.productos.find(p => p.saucer_name === this.nombre_producto);
+
+    // Actualizar el precio_unitario si se ha encontrado el producto
+    if (selectedProduct) {
+      this.precio_unitario = selectedProduct.price;
+    } else {
+      // Si no se encuentra el producto, puedes manejarlo como desees (por ejemplo, dejar el precio_unitario en cero)
+      this.precio_unitario = 0;
+    }
+  }
+
+
+}

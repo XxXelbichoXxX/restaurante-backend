@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { ApiProvider } from '../providers/api.prov';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2'
-import { EditEmployeesModalComponent } from '../edit-employees-modal/edit-employees-modal.component';
-import { AddEmployeesModalComponent } from '../add-employees-modal/add-employees-modal.component';
 import { AddCommandsPageComponent } from '../add-commands-page/add-commands-page.component';
+import { EditCommandsPageComponent } from '../edit-commands-page/edit-commands-page.component';
 
 @Component({
   selector: 'app-commands-page',
@@ -13,6 +12,7 @@ import { AddCommandsPageComponent } from '../add-commands-page/add-commands-page
 })
 export class CommandsPageComponent {
   public orders : any = [];
+  public sortOrderAsc = false;
   constructor(
     private apiProv: ApiProvider,
     public dialog: MatDialog
@@ -30,7 +30,7 @@ export class CommandsPageComponent {
     })
   }
   registerOrder(){
-    const dialogRef = this.dialog.open(AddCommandsPageComponent, {
+    const dialogRef = this.dialog.open(AddCommandsPageComponent,{
       data: {
         new: true
       }
@@ -39,9 +39,17 @@ export class CommandsPageComponent {
       this.getOrders();
     })
   }
-  updateOrder(order: any){
-    
+  updateOrder(order: any) {
+    const dialogRef = this.dialog.open(EditCommandsPageComponent, {
+      data: order,  // Aquí pasas toda la orden al diálogo
+    });
+  
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.getOrders();
+    });
   }
+  
+
   deleteOrder(order: any){
     Swal.fire({
       showCancelButton: true,
@@ -64,4 +72,19 @@ export class CommandsPageComponent {
     });
   }
 
+  sortOrdersByDateTime() {
+    // Cambia el estado de ordenación al presionar el botón
+    this.sortOrderAsc = !this.sortOrderAsc;
+
+    this.orders.sort((a: any, b: any) => {
+      const dateA = new Date(a.fecha).getTime();
+      const dateB = new Date(b.fecha).getTime();
+
+      if (this.sortOrderAsc) {
+        return dateA - dateB; // Orden ascendente (más antiguo primero)
+      } else {
+        return dateB - dateA; // Orden descendente (más reciente primero)
+      }
+    });
+  }
 }

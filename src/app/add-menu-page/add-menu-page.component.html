@@ -34,12 +34,17 @@
 
         <div class="input-group">
             <label for="price">Precio:</label>
-            <input id="price" class="modal-input" [(ngModel)]="price" placeholder="$" required>
+            <input id="price" class="modal-input" [(ngModel)]="price" placeholder="$" type="number" required>
+        </div>
+
+        <div class="input-group">
+            <label for="photo">Precio:</label>
+            <input id="photo" class="modal-input" [(ngModel)]="photo" placeholder="Inserta imagen" required>
         </div>
    
         <div class="text-center">
             <button (click)="addProduct()" class="update-button">
-                Crear Usuario
+                Agregar Platillo
             </button>
         </div>
     </div>

@@ -21,6 +21,9 @@
             <button class="Agregarorden"  (click)="registerOrder()">
                 Agregar orden
             </button>
+            <br>
+            <br>
+            <button class="OrdenarPorFecha" (click)="sortOrdersByDateTime()">Ordenar por Fecha</button>
         </div>
         <div class="flex flex-wrap -m-2">
             @for (order of orders; track order._id) {
@@ -35,7 +38,7 @@
                             <div *ngFor="let item of order.orden" class="team-position text-gray-500">{{ item.nombre_producto }} - Cantidad: {{ item.cantidad }} - Precio unitario: ${{ item.precio_unitario }}</div>
                             <h3 class="team-wShift text-gray-900 title-font font-medium">Total: ${{ order.total_orden }}</h3>
                             <h3 class="team-wShift text-gray-900 title-font font-medium">Estatus: {{ order.status }}</h3>
-                            
+                            <h3 class="team-wShift text-gray-900 title-font font-medium">Fecha y hora: {{ order.fecha|date : 'dd/MM/yyyy HH:mm' }}</h3>
                             <div class="crud-buttons flex-grow">
                                <button class="bg-blue-500 text-white px-4 py-2 rounded mr-4" (click)="updateOrder(order)">
                                     Editar

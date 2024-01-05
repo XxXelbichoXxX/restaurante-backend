@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { environment } from '../../environments/environment';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -51,7 +52,47 @@ export class ApiProvider {
           console.log(err);
         });
     });
-  }
+    }
+    updateProduct(id: any,data: any): Promise<any>{
+        const token = localStorage.getItem("token");
+        return new Promise((resolve, reject)=>{
+            axios.put(this.url+'products/'+ id, data,{
+                headers : {
+                    Authorization: token
+                }
+            }).then(res => {
+                resolve(res.data);
+            }).catch(err => {
+                console.log(err);
+            });
+        });
+    }
+    deleteProduct(id: any): Promise<any> {
+        const token = localStorage.getItem("token");
+    
+        return new Promise((resolve, reject) => {
+            // Verifica si userName está definido
+            if (!id) {
+                console.error("Error: Product is undefined");
+                reject("Error: Product is undefined");
+                return;
+            }
+    
+            axios.delete(this.url + 'products/' + id, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(res => {
+                console.log("Response from backend:", res.data);
+                resolve(res.data);
+            }).catch(err => {
+                console.log("Error from backend:", err);
+                reject(err);
+            });
+        });
+    }
+
+
 
   createUser(data: any): Promise<any> {
     const token = localStorage.getItem('token');
@@ -150,6 +191,19 @@ export class ApiProvider {
     });
   }
 
+  getProductById(productId: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(this.url + 'products/' + productId)
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        });
+    });
+  }
   //Ordenes
   getCommands(): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -160,6 +214,7 @@ export class ApiProvider {
         })
         .catch((err) => {
           console.log(err);
+
         });
     });
   }
@@ -178,6 +233,10 @@ export class ApiProvider {
         })
         .catch((err) => {
           console.log(err);
+          Swal.fire({
+            title: 'Error al crear la orden',
+            icon: 'error'
+          })
         });
     });
   }

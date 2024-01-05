@@ -20,12 +20,12 @@
       <h2>Bebidas</h2>
     </div>
     <div class="wrap column-2 carta">
-      <div *ngFor="let bebida of getBebidas()" class="plato-carta">
+      <div *ngFor="let bebida of getBebidas()" class="plato-carta" (click)="opcionesPage(bebida)">
         <div class="img-plato-carta">
-          <img src="https://cdn.forbes.com.mx/2023/05/dia-hamburguesa-e1684977814759.webp" alt="">
+          <img src="{{bebida.photo}}" alt="">
         </div>
         <div class="title-plato-carta">
-          <h4>{{bebida.saucer_name}}</h4>
+          <h4>{{bebida.id}}:{{bebida.saucer_name}}</h4>
           <p>{{bebida.description}}</p>
         </div>
         <div class="precio-plato-carta">
@@ -37,16 +37,16 @@
       <h2>Pizzas</h2>
     </div>
     <div class="wrap column-2 carta">
-      <div *ngFor="let bebida of getPizzas()" class="plato-carta">
+      <div *ngFor="let pizza of getPizzas()" class="plato-carta" (click)="opcionesPage(pizza)">
         <div class="img-plato-carta">
-          <img src="https://cdn.forbes.com.mx/2023/05/dia-hamburguesa-e1684977814759.webp" alt="">
+          <img src="{{pizza.photo}}" alt="">
         </div>
         <div class="title-plato-carta">
-          <h4>{{bebida.saucer_name}}</h4>
-          <p>{{bebida.description}}</p>
+          <h4>{{pizza.id}}:{{pizza.saucer_name}}</h4>
+          <p>{{pizza.description}}</p>
         </div>
         <div class="precio-plato-carta">
-          <span>${{bebida.price}}</span>
+          <span>${{pizza.price}}</span>
         </div>
       </div> 
     </div> 
@@ -54,16 +54,16 @@
       <h2>Pastas</h2>
     </div>
     <div class="wrap column-2 carta">
-      <div *ngFor="let bebida of getPastas()" class="plato-carta">
+      <div *ngFor="let pasta of getPastas()" class="plato-carta" (click)="opcionesPage(pasta)">
         <div class="img-plato-carta">
-          <img src="https://cdn.forbes.com.mx/2023/05/dia-hamburguesa-e1684977814759.webp" alt="">
+          <img src="{{pasta.photo}}" alt="">
         </div>
         <div class="title-plato-carta">
-          <h4>{{bebida.saucer_name}}</h4>
-          <p>{{bebida.description}}</p>
+          <h4>{{pasta.id}}:{{pasta.saucer_name}}</h4>
+          <p>{{pasta.description}}</p>
         </div>
         <div class="precio-plato-carta">
-          <span>${{bebida.price}}</span>
+          <span>${{pasta.price}}</span>
         </div>
       </div> 
     </div>
