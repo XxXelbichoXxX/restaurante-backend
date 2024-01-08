@@ -46,7 +46,8 @@ export class EditMenuPageComponent {
       if(res){
         Swal.fire({
           title: "Producto Actualizado",
-          icon: "success"
+          icon: "success",
+          confirmButtonColor: '#008c45',
         })
         this.onClose();
       }

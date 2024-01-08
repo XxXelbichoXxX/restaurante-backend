@@ -1,0 +1,14 @@
+<header class="site-header">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+            <p class="ml-3 text-xl">La Fonda del Bicho</p>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a routerLink="/employees" class="nav-link">Empleados</a>
+            <a routerLink="/menu" class="nav-link">Menú</a>
+            <a routerLink="/commands" class="nav-link">Órdenes</a>
+            <a routerLink="/mesa" class="nav-link">Mesas</a>
+        </nav>
+        <button (click)="logout()" class="logout-button">Cerrar Sesión</button>
+    </div>
+</header>

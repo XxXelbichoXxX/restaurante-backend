@@ -14,6 +14,10 @@ import { AddMenuPageComponent } from './add-menu-page/add-menu-page.component';
 import { EditMenuPageComponent } from './edit-menu-page/edit-menu-page.component';
 import { EditEmployeesModalComponent } from './edit-employees-modal/edit-employees-modal.component';
 import { AddEmployeesModalComponent } from './add-employees-modal/add-employees-modal.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MesasComponent } from './mesas/mesas.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +32,17 @@ import { AddEmployeesModalComponent } from './add-employees-modal/add-employees-
     EditMenuPageComponent,
     EditEmployeesModalComponent,
     AddEmployeesModalComponent,
+    HeaderComponent,
+    FooterComponent,
+    MesasComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

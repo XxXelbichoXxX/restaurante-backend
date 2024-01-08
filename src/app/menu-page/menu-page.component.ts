@@ -55,7 +55,10 @@ export class MenuPageComponent {
       showCancelButton: true,
       title: '¿Que desea hacer con el producto: ' + product.saucer_name + ' ?',
       confirmButtonText: "Editar",
-      cancelButtonText: `Eliminar`
+      cancelButtonText: `Eliminar`,
+      background: '#fff',
+      confirmButtonColor: '#008c45',
+      cancelButtonColor: '#CD212A',
     }).then((result) => {
       if (result.isConfirmed) {
         this.updateProduct(product);
@@ -65,7 +68,8 @@ export class MenuPageComponent {
           (res) => {
             Swal.fire({
               title: "Producto Eliminado",
-              icon: "success"
+              icon: "success",
+              confirmButtonColor: '#008c45',
             });
             this.getProducts(); 
           }

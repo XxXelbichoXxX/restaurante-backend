@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2'
 import { EditEmployeesModalComponent } from '../edit-employees-modal/edit-employees-modal.component';
 import { AddEmployeesModalComponent } from '../add-employees-modal/add-employees-modal.component';
+import { faPencilAlt, faTrashAlt  } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-employees-page',
@@ -12,6 +14,8 @@ import { AddEmployeesModalComponent } from '../add-employees-modal/add-employees
 })
 export class EmployeesPageComponent {
   public users : any = [];
+  faPencilAlt = faPencilAlt;
+  faTrashAlt  = faTrashAlt;
   constructor(
     private apiProv: ApiProvider,
     public dialog: MatDialog
@@ -47,7 +51,10 @@ export class EmployeesPageComponent {
       showCancelButton: true,
       title: 'Desea eliminar el usuario: ' + user.userName + ' ?',
       confirmButtonText: "Confirmar",
-      cancelButtonText: `Cancelar`
+      cancelButtonText: `Cancelar`,
+      background: '#fff',
+      confirmButtonColor: '#008c45',
+      cancelButtonColor: '#CD212A',
     }).then((result) => {
       if (result.isConfirmed) {
         this.apiProv.deleteUser(user.userName)
@@ -55,7 +62,8 @@ export class EmployeesPageComponent {
             (res) => {
               Swal.fire({
                 title: "Usuario Eliminado",
-                icon: "success"
+                icon: "success",
+                confirmButtonColor: '#008c45',
               });
               this.getUsers(); 
             }
@@ -76,8 +84,5 @@ export class EmployeesPageComponent {
 }
 
   
-  public logout(){
-    this.apiProv.logout();
-    window.location.href = '/login';
-  }
+
 }

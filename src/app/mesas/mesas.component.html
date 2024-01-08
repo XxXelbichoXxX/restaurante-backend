@@ -1,0 +1,10 @@
+<app-header></app-header>
+<h2>Bebidas</h2>
+<div class="container">
+    <div class="grid-container">
+        <div *ngFor="let mesa of mesasD" class="grid-item" [ngStyle]="{ 'background-color': hasPendingOrder(mesa.id) ? 'red' : 'green' }">
+            {{ mesa.name }}
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

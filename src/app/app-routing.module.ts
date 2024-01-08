@@ -10,6 +10,9 @@ import { MenuPageComponent } from './menu-page/menu-page.component';
 import { EmployeesPageComponent } from './employees-page/employees-page.component';
 import { EditEmployeesModalComponent } from './edit-employees-modal/edit-employees-modal.component';
 import { AddEmployeesModalComponent } from './add-employees-modal/add-employees-modal.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MesasComponent } from './mesas/mesas.component';
 const routes: Routes = [
   {path: 'login',component: LoginPageComponent},
   {path: 'employees',component: EmployeesPageComponent},
@@ -21,6 +24,10 @@ const routes: Routes = [
   {path: 'edit-commands',component: EditCommandsPageComponent},
   {path: 'add-menu',component: AddMenuPageComponent},
   {path: 'edit-menu',component: EditMenuPageComponent},
+  {path: 'header',component: HeaderComponent},
+  {path: 'footer',component: FooterComponent},
+  {path: 'mesa',component: MesasComponent},
+  
   {path: '**', redirectTo: 'login'}
 ];
 

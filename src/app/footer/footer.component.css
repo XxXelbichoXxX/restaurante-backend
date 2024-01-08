@@ -1,0 +1,17 @@
+/* Estilos footer */
+
+footer {
+    background-color: #008c45;
+    border-top: 1px solid #CD212A;
+}
+
+
+.title-font-footer {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+    color: #fff;
+}

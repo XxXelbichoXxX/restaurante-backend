@@ -49,7 +49,8 @@ export class EditEmployeesModalComponent {
         if(res){
           Swal.fire({
             title: "Usuario Actualizado",
-            icon: "success"
+            icon: "success",
+            confirmButtonColor: '#008c45',
           });
           this.onClose()
         }

@@ -1,17 +1,4 @@
-<header class="site-header">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a routerLink="/menu" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <span class="ml-3 text-xl">La Fonda del Bicho</span>
-        </a>
-        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a routerLink="/employees" class="nav-link">Empleados</a>
-            <a routerLink="/menu" class="nav-link">Menú</a>
-            <a routerLink="/orders" class="nav-link">Órdenes</a>
-            <a routerLink="/tables" class="nav-link">Mesas</a>
-        </nav>
-        <button (click)="logout()" class="logout-button">Cerrar Sesión</button>
-    </div>
-</header>
+<app-header></app-header>
 
 <section class="team-section">
     <div class="container team-container">
@@ -55,14 +42,4 @@
     </div>
 </section>
 
-<footer class="text-gray-600 body-font">
-    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-col flex-col">
-        <a class="flex title-font-footer font-medium items-center md:justify-start justify-center text-gray-900">
-            <span class="ml-3 text-xl">2024 La Fonda del Bicho</span>
-        </a>
-        <p style="margin-left: 10px;" class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 sm:text-center"> - © Todos los derechos reservados - 
-        </p>
-        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-        </span>
-    </div>
-</footer>
+<app-footer></app-footer>

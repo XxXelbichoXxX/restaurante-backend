@@ -1,47 +1,32 @@
-<header class="site-header">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a routerLink="/menu" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <span class="ml-3 text-xl">La Fonda del Bicho</span>
-        </a>
-        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a routerLink="/employees" class="nav-link">Empleados</a>
-            <a routerLink="/menu" class="nav-link">Menú</a>
-            <a routerLink="/commands" class="nav-link">Órdenes</a>
-            <a routerLink="/tables" class="nav-link">Mesas</a>
-        </nav>
-        <button (click)="logout()" class="logout-button">Cerrar Sesión</button>
-    </div>
-</header>
+<app-header></app-header>
 
-
-<section class="team-section">
+<div class="floating-button" (click)="registerUser()">+</div>
+<section class="team-section flex items-center justify-center h-full">
     <div class="container team-container">
-        <div class="team-header text-center mb-20">
+        <div class="team-header text-center">
             <h1 class="team-title sm:text-3xl text-2xl font-medium text-gray-900"> Nuestro Equipo</h1>
-            <br>
-            <button class="bg-green-500 text-white px-4 py-2 rounded" (click)="registerUser()">
-                Agregar Usuario
-            </button>
         </div>
         <div class="flex flex-wrap -m-2">
             @for (user of users; track user._id) {
                 <div class="team-member p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div class="team-card h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                        <img alt="team" class="team-avatar w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" 
-                             src="{{ user.photo || 'https://dummyimage.com/80x80' }}">
+                    <div class="team-card h-full flex items-center border-gray-200 border p-4 rounded-lg border border-solid border-red-500">
+                        <div class="box flex flex-col items-center text-center">
+                            <img alt="team" class="team-avatar w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mb-2" 
+                                src="{{ user.photo || 'https://dummyimage.com/80x80' }}">
+                            <div class="crud-buttons flex-grow justify-around w-full"> <!-- Añadido 'justify-around' para distribuir uniformemente -->
+                                <button class="custom-green-color text-white px-4 py-2 rounded w-full" (click)="updateUser(user)">
+                                    <fa-icon [icon]="faPencilAlt"></fa-icon>
+                                </button>
+                                <button class="custom-red-color text-white px-4 py-2 rounded w-full" (click)="deleteUser(user)">
+                                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                                </button>
+                            </div>
+                        </div>
                         <div class="team-details flex-grow">
                             <h2 class="team-name text-gray-900 title-font font-medium">{{ user.userName }}</h2>
                             <h3 class="team-email text-gray-900 title-font font-medium">{{ user.email }}</h3>
                             <h3 class="team-wShift text-gray-900 title-font font-medium">{{ user.wShift }}</h3>
                             <p class="team-position text-gray-500">{{ user.position }}</p>
-                            <div class="crud-buttons flex-grow">
-                                <button class="bg-blue-500 text-white px-4 py-2 rounded mr-4" (click)="updateUser(user)">
-                                    Editar
-                                </button>
-                                <button class="bg-red-500 text-white px-4 py-2 rounded" (click)="deleteUser(user)">
-                                    Eliminar
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,14 +35,4 @@
     </div>
 </section>
 
-<footer class="text-gray-600 body-font">
-    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-col flex-col">
-        <a class="flex title-font-footer font-medium items-center md:justify-start justify-center text-gray-900">
-            <span class="ml-3 text-xl">2024 La Fonda del Bicho</span>
-        </a>
-        <p style="margin-left: 10px;" class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 sm:text-center"> - © Todos los derechos reservados - 
-        </p>
-        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-        </span>
-    </div>
-</footer>
+<app-footer></app-footer>

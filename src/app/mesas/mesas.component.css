@@ -1,0 +1,29 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #CD212A
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* Cambiado a 3 columnas */
+    gap: 50px;
+}
+  
+  .grid-item {
+    width: 150px;
+    height: 150px;
+    background-color: #CD212A;
+    display: flex;
+    justify-content: center;  /* Centrar contenido horizontalmente */
+    align-items: center;      /* Centrar contenido verticalmente */
+  }
+  
