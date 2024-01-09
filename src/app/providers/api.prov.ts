@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class ApiProvider {
   url = environment.apiURL;
+  public currentUser: any;
 
   getUsers(): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -23,11 +24,25 @@ export class ApiProvider {
     });
   }
 
+  getUserInfo(userName: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(this.url + 'users/' + userName)
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  }
+
   login(data: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios
         .post(this.url + 'users/login', data)
         .then((res) => {
+          this.currentUser = res.data.userName; 
           resolve(res.data);
         })
         .catch((err) => {

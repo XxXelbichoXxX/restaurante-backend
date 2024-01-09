@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { ApiProvider } from '../providers/api.prov';
+import { ThisReceiver } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-login-page',
@@ -9,6 +11,8 @@ import { ApiProvider } from '../providers/api.prov';
 export class LoginPageComponent {
   public userName: string = '';
   public password: string = '';
+  public photo: string = '';
+  public role: string = '';
 
   constructor(private apiProv: ApiProvider) {
     if (apiProv.isAunthenticatedUSer()) {
@@ -22,7 +26,6 @@ export class LoginPageComponent {
       userName: this.userName,
       password: this.password,
     };
-
     this.apiProv.login(data).then(res => {
       console.log(res);
       if (res.token) {
@@ -31,4 +34,6 @@ export class LoginPageComponent {
       }
     });
   }
+
+
 }
