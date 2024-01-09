@@ -9,13 +9,15 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    height: auto;
+    margin-left: 8%;
   }
   
   .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);  /* Cambiado a 3 columnas */
     gap: 50px;
+    padding: 10px;
 }
   
   .grid-item {

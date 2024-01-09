@@ -52,6 +52,7 @@ export class AddCommandsPageComponent {
     // Filtrar los productos para quitar aquellos con nombre_producto vacío
     const filteredOrden = this.orden.filter(product => product.nombre_producto.trim() !== '');
 
+    
     const data = {
       _id: this._id,
       numero_mesa: this.numero_mesa,
@@ -85,6 +86,7 @@ export class AddCommandsPageComponent {
     }
   }
 
+ 
 
   addProduct() {
     if (!this.nombre_producto || !this.cantidad) {

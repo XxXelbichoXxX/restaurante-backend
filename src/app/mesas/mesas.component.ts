@@ -37,4 +37,11 @@ export class MesasComponent {
     hasPendingOrder(mesaId: number): boolean {
       return this.orders.some((order: any) => order.numero_mesa === mesaId && order.status === 'Pendiente');
     }
+    hasprocessingOrder(mesaId: number): boolean {
+      return this.orders.some((order: any) => order.numero_mesa === mesaId && order.status === 'En proceso');
+    }
+
+    hasCompletedOrder(mesaId: number): boolean {
+      return this.orders.some((order: any) => order.numero_mesa === mesaId && order.status === 'Completada');
+    }
 }

@@ -11,7 +11,7 @@ import { EditCommandsPageComponent } from '../edit-commands-page/edit-commands-p
   styleUrl: './commands-page.component.css'
 })
 export class CommandsPageComponent {
-  public orders : any = [];
+  public orders : any [] = [];
   public sortOrderAsc = false;
   constructor(
     private apiProv: ApiProvider,
