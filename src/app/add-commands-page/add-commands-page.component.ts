@@ -28,6 +28,7 @@ export class AddCommandsPageComponent {
   public precio_unitario = 0;
   public status = "";
   public orders: any[] = [];
+  
 
 
   constructor(
@@ -37,6 +38,13 @@ export class AddCommandsPageComponent {
   ) {
     this.getProducts();
     this.getUsers();
+    this.initializeOrder();
+  }
+  private initializeOrder() {
+    // Si estás editando una orden existente, carga los datos existentes
+    if (!this.data.new) {
+      this.numero_mesa = this.data.id;
+    }
   }
 
   public createOrder() {

@@ -11,28 +11,13 @@
         </div>
 
         <div class="input-group">
-            <label for="Mesa">Mesa:</label>
-            <select id="numero_mesa" class="modal-input" [(ngModel)]="numero_mesa" required>
-                <option >1</option>
-                <option >2</option>
-                <option >3</option>
-                <option >4</option>
-                <option >5</option>
-                <option >6</option>
-                <option >7</option>
-                <option >8</option>
-                <option >9</option>
-                <option >10</option>
-                <option >11</option>
-                <option >12</option>
-            </select>
+            <label for="numero_mesa">Mesa:</label>
+            <input id="numero_mesa" class="modal-input" [(ngModel)]="numero_mesa" placeholder="numero_mesa" disabled />
         </div>
 
         <div class="input-group">
-            <label for="Mesero">Mesero:</label>
-            <select id="Mesero" class="modal-input" [(ngModel)]="user_mesero" required>
-                <option *ngFor="let mesero of users" [value]="mesero.userName">{{ mesero.userName }}</option>
-            </select>
+            <label for="user_mesero">Mesero:</label>
+            <input id="user_mesero" class="modal-input" [(ngModel)]="user_mesero" placeholder="user_mesero" disabled />
         </div>
 
         <div class="order">

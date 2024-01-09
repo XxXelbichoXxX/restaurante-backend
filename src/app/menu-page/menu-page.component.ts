@@ -10,14 +10,16 @@ import Swal from 'sweetalert2'
   templateUrl: './menu-page.component.html',
   styleUrl: './menu-page.component.css'
 })
-export class MenuPageComponent {
+export class MenuPageComponent{
   public products: any = [];
+  activeUser: string = '';
   constructor(
     private apiProv: ApiProvider,
     public dialog: MatDialog
   ){
     this.getProducts();
   }
+
 
   public getProducts(){
     this.apiProv.getProducts().then(res =>{

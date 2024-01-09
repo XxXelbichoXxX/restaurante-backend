@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -21,6 +22,7 @@ export class ApiProvider {
         });
     });
   }
+
   login(data: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios
@@ -38,9 +40,11 @@ export class ApiProvider {
     const token = localStorage.getItem('token');
     return token ? true : false;
   }
+
   logout() {
     localStorage.removeItem('token');
   }
+
   register(data: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios
