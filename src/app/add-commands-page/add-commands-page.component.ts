@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiProvider } from '../providers/api.prov';
 import Swal from 'sweetalert2';
+import { UserService } from '../services/user-service.service';
 
 interface Producto {
   id: string;
@@ -14,7 +15,7 @@ interface Producto {
   templateUrl: './add-commands-page.component.html',
   styleUrls: ['./add-commands-page.component.css']
 })
-export class AddCommandsPageComponent {
+export class AddCommandsPageComponent{
 
   public new = true;
   public _id = '';
@@ -28,30 +29,46 @@ export class AddCommandsPageComponent {
   public precio_unitario = 0;
   public status = "";
   public orders: any[] = [];
+  userName : string = '';
+  _userNameKey = 'user_name';
+  role: string = '';
   
 
 
   constructor(
     public dialogRef: MatDialogRef<AddCommandsPageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private apiProv: ApiProvider
+    private apiProv: ApiProvider,
+    private userService: UserService
   ) {
     this.getProducts();
     this.getUsers();
+    this.getInfo(this.userService.getUser());
     this.initializeOrder();
+
+
+  }
+  getInfo(userName: any) {
+    this.apiProv.getUserInfo(userName).then(res => {
+      console.log(res);
+      this.user_mesero = res.userName;
+    });
   }
   private initializeOrder() {
     // Si estás editando una orden existente, carga los datos existentes
     if (!this.data.new) {
       this.numero_mesa = this.data.id;
+      this._id = this.generateRandomId();
     }
   }
 
   public createOrder() {
+    
     if (!this._id || !this.numero_mesa || !this.user_mesero || !this.status || !this.orden) {
       Swal.fire({
         title: "Complete todos los campos",
-        icon: "error"
+        icon: "error",
+        confirmButtonColor: '#008c45'
       });
       console.error('Todos los campos son obligatorios');
       return;
@@ -79,7 +96,8 @@ export class AddCommandsPageComponent {
             if (res) {
               Swal.fire({
                 title: "Orden Creada",
-                icon: "success"
+                icon: "success",
+                confirmButtonColor: '#008c45'
               });
               this.onClose();
             }
@@ -88,10 +106,16 @@ export class AddCommandsPageComponent {
     } else {
       Swal.fire({
         title: "La orden debe tener al menos un producto",
-        icon: "error"
+        icon: "error",
+        confirmButtonColor: '#008c45',
       });
       console.error('La orden debe tener al menos un producto');
     }
+  }
+  private generateRandomId(): string {
+    // Generar un número aleatorio entre 1000 y 9999
+    const randomId = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+    return randomId.toString();
   }
 
  
@@ -100,7 +124,8 @@ export class AddCommandsPageComponent {
     if (!this.nombre_producto || !this.cantidad) {
       Swal.fire({
         title: 'Complete todos los campos',
-        icon: 'error'
+        icon: 'error',
+        confirmButtonColor: '#008c45'
       });
       console.error('Todos los campos son obligatorios');
       return;

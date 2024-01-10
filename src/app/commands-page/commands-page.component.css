@@ -131,3 +131,9 @@ body {
     align-items: center;
     margin-left: 20%;
 }
+.custom-green-color{
+    background-color: #008c45;
+}
+.custom-red-color{
+    background-color: #CD212A;
+}

@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2'
 import { AddCommandsPageComponent } from '../add-commands-page/add-commands-page.component';
 import { EditCommandsPageComponent } from '../edit-commands-page/edit-commands-page.component';
+import { UserService } from '../services/user-service.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-mesas',
   templateUrl: './mesas.component.html',
@@ -24,11 +26,28 @@ export class MesasComponent{
     { id: 10, name: "Mesa 10" },
     { id: 11, name: "Mesa 11" },
     { id: 12, name: "Mesa 12" },
-  ]
+  ];
+  role: string = '';
   constructor(
     private apiProv: ApiProvider,
-    public dialog: MatDialog
-  ) { this.getOrders(); }
+    public dialog: MatDialog,
+    private userService: UserService,
+    private Router: Router
+  ) 
+  { 
+    this.getOrders(); 
+    this.getInfo(this.userService.getUser());
+
+  }
+  getInfo(userName: any) {
+    this.apiProv.getUserInfo(userName).then(res => {
+      this.role = res.role;
+      console.log(this.role);
+      if(this.role !== 'Administrador' && this.role !== 'Empleado'){
+      this.Router.navigate(['/menu']);
+    }
+    });
+  }
   getOrders() {
     this.apiProv.getCommands().then(res => {
       this.orders = res.data;

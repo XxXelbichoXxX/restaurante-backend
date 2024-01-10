@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
   private _userNameKey = 'user_name';
   public userName: string = '';
+  public role: string = '';
 
   constructor() {
     const storedUserName = localStorage.getItem(this._userNameKey);

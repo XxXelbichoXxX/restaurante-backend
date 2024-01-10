@@ -10,6 +10,7 @@ body, html {
     align-items: center;
     justify-content: center;
     height: auto; 
+    margin-left: 8%;
   }
   
   .grid-container {

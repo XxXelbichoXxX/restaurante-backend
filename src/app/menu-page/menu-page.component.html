@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <body>
-  <div class="floating-button" (click)="addProduct()">+</div>
+  <div *ngIf="role === 'Administrador'" class="floating-button" (click)="addProduct()">+</div>
   <section class="wrap">
     <div class="wrap-title-section"><!-- Area Bebidas -->
       <h2>Bebidas</h2>

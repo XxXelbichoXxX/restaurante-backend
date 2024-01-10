@@ -4,15 +4,15 @@
             <p class="ml-3 text-xl">La Fonda del Bicho</p>
         </a>
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a routerLink="/employees" class="nav-link">Empleados</a>
+            <a *ngIf="role === 'Administrador'" routerLink="/employees" class="nav-link">Empleados</a>
             <a routerLink="/menu" class="nav-link">Menú</a>
-            <a routerLink="/commands" class="nav-link">Órdenes</a>
-            <a routerLink="/mesa" class="nav-link">Mesas</a>
+            <a *ngIf="role === 'Administrador' || role === 'Empleado'" routerLink="/commands" class="nav-link">Órdenes</a>
+            <a *ngIf="role === 'Administrador' || role === 'Empleado'" routerLink="/mesa" class="nav-link">Mesas</a>
         </nav>
-        <div class="user">
-            <p class="text-white mr-4">{{ userName }}</p>
+        <button *ngIf="role === 'Administrador' || role === 'Empleado'" (click)="logout()" class="logout-button ml-4">Cerrar Sesión</button>
+        <div class="user flex items-center">
+            <p class="text-white mr-2">{{ userName }}</p>
             <img [src]="photo" alt="Foto de perfil" class="rounded-full h-8 w-8">
         </div>
-        <button (click)="logout()" class="logout-button">Cerrar Sesión</button>
     </div>
 </header>

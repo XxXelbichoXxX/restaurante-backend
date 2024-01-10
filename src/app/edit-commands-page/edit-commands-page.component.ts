@@ -54,7 +54,8 @@ export class EditCommandsPageComponent {
     if (!this._id || !this.numero_mesa || !this.user_mesero || !this.status || !this.orden) {
       Swal.fire({
         title: "Complete todos los campos",
-        icon: "error"
+        icon: "error",
+        confirmButtonColor: '#008c45'
       });
       console.error('Todos los campos son obligatorios');
       return;
@@ -81,7 +82,8 @@ export class EditCommandsPageComponent {
             if (res) {
               Swal.fire({
                 title: "Orden Actualizada",
-                icon: "success"
+                icon: "success",
+                confirmButtonColor: '#008c45'
               });
               this.onClose();
             }
@@ -90,7 +92,8 @@ export class EditCommandsPageComponent {
     } else {
       Swal.fire({
         title: "La orden debe tener al menos un producto",
-        icon: "error"
+        icon: "error",
+        confirmButtonColor: '#008c45'
       });
       console.error('La orden debe tener al menos un producto');
     }
@@ -100,7 +103,8 @@ export class EditCommandsPageComponent {
     if (!this.nombre_producto || !this.cantidad || !this.precio_unitario) {
       Swal.fire({
         title: 'Complete todos los campos',
-        icon: 'error'
+        icon: 'error',
+        confirmButtonColor: '#008c45'
       });
       console.error('Todos los campos son obligatorios');
       return;

@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2'
 import { AddCommandsPageComponent } from '../add-commands-page/add-commands-page.component';
 import { EditCommandsPageComponent } from '../edit-commands-page/edit-commands-page.component';
+import { UserService } from '../services/user-service.service';
+import { Router } from '@angular/router'
+import { faPencilAlt, faTrashAlt  } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-commands-page',
@@ -13,11 +16,26 @@ import { EditCommandsPageComponent } from '../edit-commands-page/edit-commands-p
 export class CommandsPageComponent {
   public orders : any [] = [];
   public sortOrderAsc = false;
+  faPencilAlt = faPencilAlt;
+  faTrashAlt  = faTrashAlt;
+  role: string = '';
   constructor(
     private apiProv: ApiProvider,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userService: UserService,
+    private Router: Router
   ){
     this.getOrders();
+    this.getInfo(this.userService.getUser());
+  }
+  getInfo(userName: any) {
+    this.apiProv.getUserInfo(userName).then(res => {
+      this.role = res.role;
+      console.log(this.role);
+      if(this.role !== 'Administrador' && this.role !== 'Empleado'){
+      this.Router.navigate(['/menu']);
+    }
+    });
   }
   
   public logout(){
@@ -55,7 +73,9 @@ export class CommandsPageComponent {
       showCancelButton: true,
       title: 'Desea eliminar la orden: ' + order._id + ' ?',
       confirmButtonText: "Confirmar",
-      cancelButtonText: `Cancelar`
+      cancelButtonText: `Cancelar`,
+      confirmButtonColor: '#008c45',
+      cancelButtonColor: '#CD212A'
     }).then((result) => {
       if (result.isConfirmed) {
         this.apiProv.deleteCommands(order._id)
@@ -63,7 +83,8 @@ export class CommandsPageComponent {
             (res) => {
               Swal.fire({
                 title: "Orden Eliminada",
-                icon: "success"
+                icon: "success",
+                confirmButtonColor: '#008c45'
               });
               this.getOrders(); 
             }

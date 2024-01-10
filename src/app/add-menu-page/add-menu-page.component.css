@@ -37,10 +37,11 @@
 
 /* Estilo para el botón de actualizar */
 .update-button {
-    background-color: #3490dc;
+    background-color: #008c45;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    border: 1px solid #CD212A;
 }

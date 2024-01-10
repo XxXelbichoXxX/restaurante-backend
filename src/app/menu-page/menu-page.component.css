@@ -34,6 +34,7 @@ body {
   background-color: #008c45;
   transition: transform 0.3s ease; /* Agregamos una transición */
   color: #ffffff;
+  cursor: pointer;
 }
 
 /* Añadimos el estilo de zoom al pasar el mouse */

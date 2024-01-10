@@ -3,12 +3,11 @@
         <button (click)="onClose()" class="close-button">
             X
         </button>
-    </div>
-
+    </div>  
     <div class="modal-content">
         <div class="input-group">
             <label for="id">Codigo de producto:</label>
-            <input id="id" class="modal-input" [(ngModel)]="id" placeholder="Codigo de producto" required>
+            <input id="id" class="modal-input" [(ngModel)]="id"  name="id "placeholder="Codigo de producto: " required>
         </div>              
 
         <div class="input-group">
@@ -38,7 +37,7 @@
         </div>
 
         <div class="input-group">
-            <label for="photo">Precio:</label>
+            <label for="photo">Imagen:</label>
             <input id="photo" class="modal-input" [(ngModel)]="photo" placeholder="Inserta imagen" required>
         </div>
    

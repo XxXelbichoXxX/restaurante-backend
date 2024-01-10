@@ -23,7 +23,6 @@ export class ApiProvider {
         });
     });
   }
-
   getUserInfo(userName: any): Promise<any> {
     return new Promise((resolve, reject) => {
       axios
@@ -58,6 +57,8 @@ export class ApiProvider {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    this.currentUser = null;
   }
 
   register(data: any): Promise<any> {
@@ -113,23 +114,35 @@ export class ApiProvider {
 
 
 
-  createUser(data: any): Promise<any> {
-    const token = localStorage.getItem('token');
-    return new Promise((resolve, reject) => {
-      axios
-        .post(this.url + 'users', data, {
-          headers: {
-            Authorization: token,
-          },
-        })
-        .then((res) => {
-          resolve(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
-  }
+    createUser(data: any): Promise<any> {
+      const token = localStorage.getItem('token');
+      return new Promise((resolve, reject) => {
+        axios
+          .post(this.url + 'users', data, {
+            headers: {
+              Authorization: token,
+            },
+          })
+          .then((res) => {
+            resolve(res.data);
+          })
+          .catch((err) => {
+            console.error(err);
+          
+            if (err.response) {
+              console.log('Código de estado HTTP:', err.response.status);
+              console.log('Respuesta del servidor:', err.response.data);
+            }
+          
+            if (err.response || err.response.status === 400) {
+              reject('El nombre de usuario o correo electrónico ya está en uso.');
+            } else {
+              reject('Error al crear el usuario. Por favor, inténtalo de nuevo más tarde.');
+            }
+          });
+                   
+      });
+    }
 
   updateUser(userName: any, data: any): Promise<any> {
     console.log('userName:', userName);

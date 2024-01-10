@@ -28,7 +28,8 @@ export class AddMenuPageComponent {
     if (!this.id || !this.saucer_name || !this.category || !this.description || !this.price || !this.photo) {
       Swal.fire({
         title: "Complete todos los campos",
-        icon: "error"
+        icon: "error",
+        confirmButtonColor: '#008c45'
       });
       console.error('Todos los campos son obligatorios');
       return;
@@ -45,7 +46,8 @@ export class AddMenuPageComponent {
     if(res){
       Swal.fire({
         title: "Producto Creado",
-        icon: "success"
+        icon: "success",
+        confirmButtonColor: '#008c45'
       });
       this.dialogRef.close();
       console.log(data)

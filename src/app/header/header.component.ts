@@ -13,8 +13,6 @@ export class HeaderComponent {
    photo: string = '';
    role: string = '';
    _userNameKey = 'user_name';
-   
-
   constructor(private apiProv: ApiProvider, private userService: UserService, private Router: Router) {
     this.getInfo(this.userService.getUser());
   }

@@ -1,9 +1,10 @@
-
 .site-header {
     background-color: #008c45; 
     border-bottom: 2px solid #CD212A; 
     padding: 15px 0;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .container {
@@ -12,39 +13,54 @@
 }
 
 .title-font-body {
-    display: flex;
-    align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
-    margin-top: 10px; 
-    color: #fff; 
+    margin: 0; 
+    color: #fff;
     text-decoration: none;
 }
 
 .nav-link {
-    margin-right: 15px;
-    margin-top: 10px; 
-    color: #FFF; 
+    margin-right: 10px;
+    color: #FFF;
     text-decoration: none;
     cursor: pointer;
+    transition: color 0.3s ease; 
 }
 
 .nav-link:hover {
-    color: #CD212A; 
+    color: #CD212A;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user p {
+    margin: 0;
+    margin-right: 8px; 
+    color: #fff;
+}
+
+.user img {
+    border-radius: 50%;
+    height: 30px; 
+    width: 30px; 
 }
 
 .logout-button {
-    margin-top: 10px; 
-    background-color: #008c45; 
+    background-color: #008c45;
     border: none;
-    padding: 8px 16px; 
-    font-size: 1rem; 
-    color: #fff; 
+    padding: 8px 16px;
+    font-size: 1rem;
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease; 
     border-radius: 5px;
 }
 
 .logout-button:hover {
-    background-color: #CD212A; 
+    background-color: #CD212A;
+    color: #fff; 
 }

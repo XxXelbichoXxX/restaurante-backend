@@ -14,7 +14,9 @@ export class EditEmployeesModalComponent {
   public email = "";
   public password = "";
   public wShift = "";
+  public role = "";
   public photo = "";
+
   constructor(
     public dialogRef: MatDialogRef<EditEmployeesModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -26,6 +28,7 @@ export class EditEmployeesModalComponent {
     this.email = data.email;
     this.password = data.password;
     this.wShift = data.wShift;
+    this.role = data.role;
     this.photo = data.photo;
   }
 
@@ -39,13 +42,14 @@ export class EditEmployeesModalComponent {
       email: this.email,
       password: this.password,
       wShift: this.wShift,
+      role: this.role,
       photo: this.photo
     }
 
     this.apiProv.updateUser(this.userName, data)
     .then(
       (res) => {
-        console.log("Respuesta del servidor:", res); // Añade esta línea para verificar la respuesta del servidor
+        console.log("Respuesta del servidor:", res); 
         if(res){
           Swal.fire({
             title: "Usuario Actualizado",
