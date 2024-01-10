@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-   userName = this.userService.userName;
+   userName : string = '';
    photo: string = '';
    role: string = '';
+   _userNameKey = 'user_name';
    
 
   constructor(private apiProv: ApiProvider, private userService: UserService, private Router: Router) {
-    this.userName = this.userService.userName;
-    this.getInfo(this.userName);
+    this.getInfo(this.userService.getUser());
   }
 
   getInfo(userName: any) {

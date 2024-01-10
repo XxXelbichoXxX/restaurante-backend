@@ -18,6 +18,11 @@ export class LoginPageComponent {
       router.navigate(['/menu']);
       console.log('Inicio de sesión');
     }
+
+    const storedUserName = localStorage.getItem('user_name');
+    if (storedUserName) {
+      this.userService.setUser(storedUserName);
+    }
   }
 
   public login() {
@@ -30,7 +35,7 @@ export class LoginPageComponent {
       console.log(res);
       if (res.token) {
         localStorage.setItem('token', res.token);
-        this.userService.userName = this.userName;
+        this.userService.setUser(this.userName);
         this.router.navigate(['/menu']);
       }
     });

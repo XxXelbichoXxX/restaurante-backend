@@ -1,13 +1,12 @@
 <app-header></app-header>
 <div class="container">
     <div class="grid-container">
-        <div *ngFor="let mesa of mesasD" class="grid-item" 
-        [ngStyle]="{ 'background-color': hasPendingOrder(mesa.id) ? 'red' : 
+        <div *ngFor="let mesa of mesasD" class="grid-item" [ngStyle]="{ 'background-color': hasPendingOrder(mesa.id) ? 'red' : 
                                          hasprocessingOrder(mesa.id) ? 'yellow' : 
                                          hasCompletedOrder(mesa.id) ? 'green' : 'lightgray' }"
-        (click)="openOrderWindow(mesa)">
-       {{ mesa.name }}
-   </div>
+            (click)="openOrderWindow(mesa)">
+            {{ mesa.name }}
+        </div>
     </div>
 </div>
 <app-footer></app-footer>
