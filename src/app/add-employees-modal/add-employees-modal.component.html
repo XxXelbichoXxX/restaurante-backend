@@ -33,6 +33,14 @@
         
 
         <div class="input-group">
+            <label for="wShift">Rol:</label>
+            <select id="wShift" class="modal-input" [(ngModel)]="role" required>
+                <option value="Matutino">Administrador</option>
+                <option value="Vespertino">Empleado</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
             <label for="photo">Foto:</label>
             <input id="photo" class="modal-input" [(ngModel)]="photo" placeholder="https://" required>
         </div>

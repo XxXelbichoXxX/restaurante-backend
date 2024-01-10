@@ -15,6 +15,7 @@ export class AddEmployeesModalComponent {
   public password = "";
   public wShift = "";
   public photo = "";
+  public role = "";
 
 constructor (
   public dialogRef: MatDialogRef<AddEmployeesModalComponent>,
@@ -26,7 +27,7 @@ constructor (
 
 public createUser() {
 
-  if (!this.userName || !this.email || !this.password || !this.wShift || !this.photo) {
+  if (!this.userName || !this.email || !this.password || !this.wShift || !this.photo || !this.role) {
     Swal.fire({
       title: "Complete todos los campos",
       icon: "error"
@@ -40,7 +41,8 @@ public createUser() {
     email: this.email,
     password: this.password,
     wShift: this.wShift,
-    photo: this.photo
+    photo: this.photo,
+    role: this.role
   }
   this.apiProv.createUser(data)
   .then(
