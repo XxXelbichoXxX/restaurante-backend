@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MesasComponent } from './mesas/mesas.component';
+import { UserService } from './services/user-service.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { MesasComponent } from './mesas/mesas.component';
     ReactiveFormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

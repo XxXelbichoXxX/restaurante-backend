@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { ApiProvider } from '../providers/api.prov';
-import { ThisReceiver } from '@angular/compiler';
-
+import { UserService } from '../services/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -11,12 +11,11 @@ import { ThisReceiver } from '@angular/compiler';
 export class LoginPageComponent {
   public userName: string = '';
   public password: string = '';
-  public photo: string = '';
-  public role: string = '';
 
-  constructor(private apiProv: ApiProvider) {
+
+  constructor(private apiProv: ApiProvider, private userService: UserService, private router: Router) {
     if (apiProv.isAunthenticatedUSer()) {
-      window.location.href = '/menu';
+      router.navigate(['/menu']);
       console.log('Inicio de sesión');
     }
   }
@@ -26,11 +25,13 @@ export class LoginPageComponent {
       userName: this.userName,
       password: this.password,
     };
+    
     this.apiProv.login(data).then(res => {
       console.log(res);
       if (res.token) {
         localStorage.setItem('token', res.token);
-        window.location.href = '/menu';
+        this.userService.userName = this.userName;
+        this.router.navigate(['/menu']);
       }
     });
   }

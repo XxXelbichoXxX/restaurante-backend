@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiProvider } from '../providers/api.prov';
+import { UserService } from '../services/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,12 +9,14 @@ import { ApiProvider } from '../providers/api.prov';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-   userName: string = '';
+   userName = this.userService.userName;
    photo: string = '';
    role: string = '';
+   
 
-  constructor(private apiProv: ApiProvider) {
-    this.getInfo("bicho");
+  constructor(private apiProv: ApiProvider, private userService: UserService, private Router: Router) {
+    this.userName = this.userService.userName;
+    this.getInfo(this.userName);
   }
 
   getInfo(userName: any) {
@@ -27,7 +31,7 @@ export class HeaderComponent {
 
   public logout() {
     this.apiProv.logout();
-    window.location.href = '/login';
+    this.Router.navigate(['/login']);
   }
 
 }

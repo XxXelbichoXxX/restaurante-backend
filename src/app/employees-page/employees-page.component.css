@@ -126,3 +126,9 @@ body {
   .floating-button:hover {
     background-color: #44e080;
   }
+
+  section {
+    height: auto;
+    width: 70%;
+    margin-left: 15%;
+  }
